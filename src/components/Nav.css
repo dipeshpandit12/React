@@ -1,0 +1,45 @@
+.nav{
+    display: grid;
+    justify-content: space-between;
+}
+.image{
+    grid-column: 3/ span 2;
+    height: 5rem;
+}
+
+ul{
+    grid-column: 5/ span 7;
+    display: grid;
+    grid-template-columns: repeat(7, auto);
+    column-gap: 20px;
+    align-items: center;
+}
+
+li{
+    list-style-type: none;
+}
+
+
+
+/* 
+ .nav{
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+img{
+    
+    margin-right: 7rem;
+}
+ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+li{
+    padding-right: 3rem;
+}
+
+ */

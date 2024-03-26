@@ -1,9 +1,10 @@
 
+import "./Footer.css";
 
 export default function Footer(){
     return(
-        <footer>
+        <div className="footer">
             @Copyright 2024
-        </footer>
+        </div>
     )
 }
