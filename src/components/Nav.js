@@ -1,8 +1,8 @@
-import logo from "../logo.png"
+import logo from "./assets/logo.png"
 import './Nav.css'
 export default function Nav(){
     return(
-        <div className="nav">
+        <nav>
             <div className="image">
                 <img src={logo} alt="logo"></img>
             </div>
@@ -14,6 +14,6 @@ export default function Nav(){
                 <li>ORDER ONINE</li>
                 <li>LOGIN IN</li>
             </ul>
-        </div>
+        </nav>
     )
 }

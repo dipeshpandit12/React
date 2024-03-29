@@ -4,9 +4,7 @@
 }
 .image{
     grid-column: 3/ span 2;
-    height: 5rem;
 }
-
 ul{
     grid-column: 5/ span 7;
     display: grid;
