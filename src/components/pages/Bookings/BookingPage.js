@@ -1,9 +1,7 @@
 import BookingForm from "./BookingForm";
 
-function BookingPage(){
+export default function BookingPage(){
     return(
         <BookingForm/>
     )
 }
-
-export default BookingPage;

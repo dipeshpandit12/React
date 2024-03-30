@@ -1,14 +1,28 @@
-import Main from "./components/Layout/Main"
-import './App.css'
+import {
+  Route,
+  Routes
+}from 'react-router-dom';
+import pages from "./utils/pages"
+import Layout from "./components/Layout/Layout"
+import HomePage from "./components/pages/Home/HomePage"
 import BookingPage from "./components/pages/Bookings/BookingPage";
+import NotFoundPage from "./components/pages/NotFound/NotFoundPage";
+import UnderConstructionPage from './components/pages/UnderConstruction/UnderConstructionPage';
 
-
-function App() {
+export default function App() {
   return (
-    <Main>
-      <BookingPage/>
-    </Main>
+    <>
+      <Layout>
+        <Routes>
+          <Route path={pages.get("home").path} element={<HomePage/>}/>
+          <Route path={pages.get("about").path} element={<UnderConstructionPage/>}/>
+          <Route path={pages.get("menu").path} element={<UnderConstructionPage/>}/>
+          <Route path={pages.get("bookings").path} element={<BookingPage/>}/>
+          <Route path={pages.get("orderOnline").path} element={<UnderConstructionPage/>}/>
+          <Route path={pages.get("login").path} element={<UnderConstructionPage/>}/>
+          <Route path="*" element={<NotFoundPage/>}/>
+        </Routes>
+      </Layout>
+    </>
   );
 }
-
-export default App;
