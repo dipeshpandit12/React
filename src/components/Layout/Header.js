@@ -1,8 +1,9 @@
-import logo from "./assets/logo.png"
-import './Nav.css'
-export default function Nav(){
+import logo from './assets/logo.png'
+import "./Header.css"
+export default function Header(){
     return(
-        <nav>
+        <header>
+            <nav>
             <div className="image">
                 <img src={logo} alt="logo"></img>
             </div>
@@ -15,5 +16,6 @@ export default function Nav(){
                 <li>LOGIN IN</li>
             </ul>
         </nav>
+        </header>
     )
 }
