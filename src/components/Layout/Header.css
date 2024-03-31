@@ -6,6 +6,7 @@
 .nav-bar-logo{
     grid-column: 1;
     justify-content: start;
+    display: grid;
     align-items: center;
     line-height: 0;
 }
@@ -62,10 +63,11 @@
         grid-template-columns: auto auto;
     }
     .nav-bar-hamburger{
-        width: 2.5rem;
+        width: 6rem;
         justify-self:end;
         display: inline-block;
         border: none;
+        margin-right: -1rem;
     }
     .nav-bar-links{
         position: absolute;

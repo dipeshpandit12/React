@@ -1,46 +1,116 @@
 import { useState } from "react";
+import FormField from "./FormField";
 
-function BookingForm(){
-    const [date,setDate]=useState("");
-    const [time,setTime]=useState("");
-    const [guest,setGuest]=useState("");
-    const [occasion,setOccasion]=useState("");
+const BookingForm=({
+    availableTimes,
+    dispatchOnDateChange,
+    submitData
+})=>{
+
+    const minimumDate=new Date().toISOString().split('T')[0];
+    const defaultTime=availableTimes[0];
+    const minimumNumberOfGuests=1;
+    const maximumNumberOfGuests=10;
+    const occasions=['Birthday','Anniversary'];
+    const invalidDateErrorMessage='Please choose a valid date';
+    const invalidTimeErrorMessage='Please choose a valid time';
+    const invalidOccasionErrorMessage="Please choose a valid occasion";
+    const invalidNumberOfGuestsErrorMessage='Please enter a number between 1 and 10';
+
+    const [date,setDate]=useState(minimumDate);
+    const [time,setTime]=useState(defaultTime);
+    const [guest,setGuest]=useState(minimumNumberOfGuests);
+    const [occasion,setOccasion]=useState(occasions[0]);
+
+    const isDateValid=()=>date !=="";
+    const isTimeValid=()=>time!=="";
+    const isNumberOfGuestsValid=()=>guest!=='';
+    const isOccasionValid=()=>occasion!=='';
+
+    const areAllFieldsValid=()=>
+    isDateValid() && isTimeValid() && isNumberOfGuestsValid() && isOccasionValid();
 
     const handleSubmit=(e)=>{
         e.preventDefault();
-        alert(`The form is submitted and we have the following details
-        ${date} ${time} ${guest} ${occasion}`)
+        submitData({date,time,guest,occasion,});
     }
 
     return(
         <form onSubmit={handleSubmit}>
-            <label>
-                Choose date
-                <input value={date} type="date" onChange={(e)=>setDate(e.target.value)}/>
-            </label>
-            <label>
-                Select Time
-                <select value={time} onChange={(e)=>setTime(e.target.value)}>
-                <option>17:00</option>
-                <option>18:00</option>
-                <option>19:00</option>
-                <option>20:00</option>
-                <option>21:00</option>
-                <option>22:00</option>
+            <FormField
+                label="Date"
+                htmlFor='booking-date'
+                hasError={!isDateValid}
+                errorMessage={invalidDateErrorMessage}
+            >
+                <input 
+                    value={date}
+                    type="date"
+                    id="booking-date"
+                    name='booking-date'
+                    min={minimumDate}
+                    required={true}
+                    onChange={(e)=>{setDate(e.target.value);dispatchOnDateChange(e.target.value)}}
+                />
+            </FormField>
+            <FormField 
+                label="Time" 
+                htmlFor="booking-time" 
+                hasError={!isTimeValid()} 
+                errorMessage={invalidTimeErrorMessage}
+            >
+                <select 
+                    id="booking-time" 
+                    name="booking-time" 
+                    value={time} 
+                    required={true} 
+                    onChange={(e)=>setTime(e.target.value)}
+                >
+                    {availableTimes.map(times => 
+                        <option data-testid="booking-time-option" key={times}>
+                        {times}
+                        </option>
+                    )}
                 </select>
-            </label>
-            <label>
-                Number of guests
-                <input type="number" placeholder="1" min="1" max="10" onChange={(e)=>setGuest(e.target.value)} value={guest}></input>
-            </label>
-            <label>
-                Occasion
-                <select onChange={(e)=>setOccasion(e.target.value)} value={occasion}>
-                    <option>Birthday</option>
-                    <option>Anniversary</option>
+            </FormField>
+            <FormField 
+                label="Number of guests" 
+                htmlFor="booking-number-guests" 
+                hasError={!isNumberOfGuestsValid()} 
+                errorMessage={invalidNumberOfGuestsErrorMessage}
+            >
+                <input 
+                type="number" 
+                id="booking-number-guests" 
+                name="booking-number-guests" 
+                value={guest} 
+                min={minimumNumberOfGuests} 
+                max={maximumNumberOfGuests} 
+                required={true} 
+                onChange={e => setGuest(e.target.value)}
+                />
+            </FormField>
+            <FormField 
+                label="Occasion" 
+                htmlFor="booking-occasion" 
+                hasError={!isOccasionValid()} 
+                errorMessage={invalidOccasionErrorMessage}
+            >
+                <select 
+                id="booking-occasion" 
+                name="booking-occasion" 
+                value={occasion} 
+                required={true} 
+                onChange={e => setOccasion(e.target.value)}
+                >
+                {occasions.map(occasionx => 
+                    <option data-testid="booking-occasion-option" key={occasionx}>
+                    {occasion}
+                    </option>
+                )}
                 </select>
-            </label>
-            <button type="submit" >Submit</button>
+            </FormField>
+            <button className="button-primary" type="submit" disabled={!areAllFieldsValid}>Submit</button>
         </form>
     )
 }

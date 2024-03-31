@@ -23,7 +23,7 @@ export default function Header(){
                     onClick={()=>setIsNavExpanded(!isNavExpanded)}
                     >
                         {isNavExpanded ?
-                        <FontAwesomeIcon icon={faXmark}  size="2x" />:
+                        <FontAwesomeIcon icon={faXmark}  size="2x"/>:
                             <FontAwesomeIcon icon={faBars} size='2x'/>
                         }
                 </button>
