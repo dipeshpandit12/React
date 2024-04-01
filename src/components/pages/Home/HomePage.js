@@ -8,7 +8,7 @@ export default function HomePage(){
             <Hero/>
             <WeekSpecials/>
             <Testimonials/>
-            {/* <OurStory/> */}
+            <OurStory/>
         </>
     )
 }
