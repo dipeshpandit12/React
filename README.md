@@ -1,7 +1,7 @@
 LITTLE LEMON is a demo site of a restaurant.
 
 
-1. Persona:
+1. Persona: https://www.figma.com/file/dPKyIeloAAACKYlEawusYM/persona?type=design&node-id=307%3A82&mode=design&t=r9Ziw93gfRUrHDW1-1
 
 2. Journey map:
 
