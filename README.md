@@ -11,4 +11,8 @@ LITTLE LEMON is a demo site of a restaurant.
 
   Mobile: https://www.figma.com/file/1TGnmFbggChYm0Wh6vGo9D/Payment-and-Order?type=design&node-id=0%3A1&mode=design&t=gEA5w9RPKFBaHCKC-1
 
-4. Live demo: https://littlelemon-gold.vercel.app/ 
+4. Live demo: https://littlelemon-gold.vercel.app/
+
+5. Demo image:
+![image](https://github.com/dipeshpandit12/capstone/assets/111444800/ce598e08-5e92-463b-84ca-c018b939d49f)
+
